@@ -34,6 +34,14 @@ build:
 run:
 	@$(container_run) target/release/hello 
 
+.PHONY: local
+local:
+	cargo build --release 
+
+.PHONY: local-run
+local-run:
+	target/release/hello 
+
 .PHONY: docker-run
 docker-run:
 	@$(container_run) $(CMD) 
