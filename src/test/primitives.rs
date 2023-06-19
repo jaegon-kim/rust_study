@@ -15,6 +15,18 @@ pub fn test_primitive() {
     mutable = 60;
 
     //mutable = true; // this causes error
-    let mutable = true; // this causes warning   
+    let mutable = true; // this causes warning
+
+    test_literal_and_operator();
+
+}
+
+fn test_literal_and_operator() {
+    println!("test_literal_and_operator");
+
+    println!(" 1 + 2 = {}", 1u32 + 2);
+    println!(" 1 - 2 = {}", 1i32 - 2);
+
+    println!(" 1e4 = {}, -2.5e-3 = {}", 1e4, -2.5e-3);
 
 }
