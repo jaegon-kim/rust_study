@@ -21,5 +21,8 @@ pub fn test_array_slice() {
     analyze_slice(&xs[1..4]);
     analyze_slice(&ys[10..12]);
 
+    let empty_array: [u32; 0] = [];
+    assert_eq!(&empty_array, &[]);
+    assert_eq!(&empty_array, &[][..]);
 }
 
