@@ -5,5 +5,6 @@ fn main() {
     //test::primitives::test_primitive();
     //test::print::test_print();
     //test::tuples::test_tuples();
-    test::array_slice::test_array_slice();
+    //test::array_slice::test_array_slice();
+    test::structures::test_structures();
 }
