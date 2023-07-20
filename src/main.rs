@@ -6,5 +6,6 @@ fn main() {
     //test::print::test_print();
     //test::tuples::test_tuples();
     //test::array_slice::test_array_slice();
-    test::structures::test_structures();
+    //test::structures::test_structures();
+    test::enums::test_enum();
 }
