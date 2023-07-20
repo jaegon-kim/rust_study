@@ -20,7 +20,6 @@ pub fn test_array_slice() {
     analyze_slice(&xs);
     analyze_slice(&xs[1..4]);
     analyze_slice(&ys[10..12]);
-    
 
 }
 
