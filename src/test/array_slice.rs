@@ -46,9 +46,13 @@ pub fn test_array_slice() {
     }
 
     println!();
-    for v in xs {
+
+    //for v in xs { // borrow the array with `&` or call `.iter()` on it to iterate over it
+    //for v in &xs { // This is 'Ok'
+    for v in xs.iter() { // This is also 'Ok'
         println!(" {}", v);
     }
+    
 
     print_slice(&xs);
     print_slice(&xs[1..xs.len()-1]);

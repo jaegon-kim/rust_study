@@ -106,7 +106,8 @@ pub fn test_print() {
     let list = List(vec![1, 2, 3, 4, 5]);
     println!("using fmt::Display '{}'", list);
 
-    for (city) in [
+    //for (city) in [ // this will cause 'borrow the array with `&` or call `.iter()` on it to iterate over it'
+    for (city) in &[
         City {name: "Suwon", lat: 10.1, lon:20.2},
         City {name: "Seoul", lat: 20.1, lon: 21.1},
         City {name: "Jeju", lat: 30.1, lon:33.1}
@@ -114,7 +115,8 @@ pub fn test_print() {
         println!("{}", city);
     }
 
-    for (color) in [
+    //for (color) in [ // this will cause 'borrow the array with `&` or call `.iter()` on it to iterate over it'
+    for (color) in &[
         Color{r:10, g:11, b:12},
         Color{r:11, g:12, b:13},
         Color{r:12, g:13, b:14}
@@ -122,8 +124,5 @@ pub fn test_print() {
         println!("{:?}", color);
         //println!("{:#?}", color);
     }
-    
-
-
 
 }
