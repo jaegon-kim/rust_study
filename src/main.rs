@@ -7,5 +7,6 @@ fn main() {
     //test::tuples::test_tuples();
     //test::array_slice::test_array_slice();
     //test::structures::test_structures();
-    test::enums::test_enum();
+    //test::enums::test_enum();
+    test::list_functional::test_list_functional();
 }
