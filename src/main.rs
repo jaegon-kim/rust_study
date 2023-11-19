@@ -9,5 +9,6 @@ fn main() {
     //test::structures::test_structures();
     //test::enums::test_enum();
     //test::list_functional::test_list_functional();
-    test::box_heap::test_box();
+    //test::box_heap::test_box();
+    test::methods::test_methods();
 }

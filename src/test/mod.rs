@@ -6,3 +6,4 @@ pub mod structures;
 pub mod enums;
 pub mod list_functional;
 pub mod box_heap;
+pub mod methods;
