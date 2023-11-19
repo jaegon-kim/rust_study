@@ -5,3 +5,4 @@ pub mod array_slice;
 pub mod structures;
 pub mod enums;
 pub mod list_functional;
+pub mod box_heap;
