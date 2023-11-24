@@ -1,4 +1,5 @@
 
+#![allow(unused)]
 static LANGUAGE: &str = "Rust";
 const THRESHOLD: i32 = 10;
 

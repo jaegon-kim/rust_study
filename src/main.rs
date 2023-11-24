@@ -11,5 +11,6 @@ fn main() {
     //test::list_functional::test_list_functional();
     //test::box_heap::test_box();
     //test::methods::test_methods();
-    test::constants::test_constants();
+    //test::constants::test_constants();
+    test::variable_bindings::test_variable_findings();
 }

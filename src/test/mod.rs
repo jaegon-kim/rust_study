@@ -8,3 +8,4 @@ pub mod list_functional;
 pub mod box_heap;
 pub mod methods;
 pub mod constants;
+pub mod variable_bindings;
