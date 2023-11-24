@@ -1,4 +1,4 @@
-
+#![allow(unused)]
 
 fn test1() {
     let long_lived_binding =  1;

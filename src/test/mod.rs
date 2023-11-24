@@ -11,3 +11,5 @@ pub mod constants;
 pub mod variable_bindings;
 pub mod mutability;
 pub mod scope_shadowing;
+pub mod declare_first;
+pub mod freezing;
