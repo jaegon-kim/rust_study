@@ -1,5 +1,5 @@
 //
-//#![allow(unused)]
+#![allow(unused)]
 
 pub fn test_variable_findings() {
     println!("test variable findings");

@@ -12,5 +12,6 @@ fn main() {
     //test::box_heap::test_box();
     //test::methods::test_methods();
     //test::constants::test_constants();
-    test::variable_bindings::test_variable_findings();
+    //test::variable_bindings::test_variable_findings();
+    test::mutability::test_mutability();
 }
