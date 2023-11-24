@@ -13,5 +13,6 @@ fn main() {
     //test::methods::test_methods();
     //test::constants::test_constants();
     //test::variable_bindings::test_variable_findings();
-    test::mutability::test_mutability();
+    //est::mutability::test_mutability();
+    test::scope_shadowing::test_scope_shadowing();
 }
