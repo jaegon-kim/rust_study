@@ -16,5 +16,9 @@ fn main() {
     //est::mutability::test_mutability();
     //test::scope_shadowing::test_scope_shadowing();
     //test::declare_first::test_declare_first();
-    test::freezing::test_freezing();
+    //test::freezing::test_freezing();
+    //test::casting::test_casting();
+    //test::literal::test_literal();
+    //test::inference::test_inference();
+    test::alias::test_alias();
 }

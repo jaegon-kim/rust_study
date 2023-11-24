@@ -13,3 +13,7 @@ pub mod mutability;
 pub mod scope_shadowing;
 pub mod declare_first;
 pub mod freezing;
+pub mod casting;
+pub mod literal;
+pub mod inference;
+pub mod alias;
