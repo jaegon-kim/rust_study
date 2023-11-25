@@ -17,3 +17,4 @@ pub mod casting;
 pub mod literal;
 pub mod inference;
 pub mod alias;
+pub mod from_into;

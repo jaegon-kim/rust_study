@@ -20,5 +20,6 @@ fn main() {
     //test::casting::test_casting();
     //test::literal::test_literal();
     //test::inference::test_inference();
-    test::alias::test_alias();
+    //test::alias::test_alias();
+    test::from_into::test_from_into();
 }
