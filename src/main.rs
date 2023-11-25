@@ -21,5 +21,7 @@ fn main() {
     //test::literal::test_literal();
     //test::inference::test_inference();
     //test::alias::test_alias();
-    test::from_into::test_from_into();
+    //test::from_into::test_from_into();
+    //test::tryfrom_tryinto::test_tryfrom_tryinto();
+    test::to_from_string::test_to_from_string();
 }
