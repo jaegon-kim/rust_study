@@ -20,4 +20,6 @@ pub mod alias;
 pub mod from_into;
 pub mod tryfrom_tryinto;
 pub mod to_from_string;
+pub mod expression;
+pub mod flow_ctrl;
 

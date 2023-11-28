@@ -23,5 +23,7 @@ fn main() {
     //test::alias::test_alias();
     //test::from_into::test_from_into();
     //test::tryfrom_tryinto::test_tryfrom_tryinto();
-    test::to_from_string::test_to_from_string();
+    //test::to_from_string::test_to_from_string();
+    //test::expression::test_expression();
+    test::flow_ctrl::test_flow_ctrl();
 }
