@@ -27,5 +27,6 @@ fn main() {
     //test::expression::test_expression();
     //test::flow_ctrl::test_flow_ctrl();
     //test::functions::test_functions();
-    test::closures::test_closures();
+    //test::closures::test_closures();
+    test::higher_order_functions::test_higher_order_functions();
 }
