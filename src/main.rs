@@ -28,5 +28,6 @@ fn main() {
     //test::flow_ctrl::test_flow_ctrl();
     //test::functions::test_functions();
     //test::closures::test_closures();
-    test::higher_order_functions::test_higher_order_functions();
+    //test::higher_order_functions::test_higher_order_functions();
+    test::diverging_functions::test_diverging_functions();
 }
