@@ -38,10 +38,13 @@ struct Point {
 }
 
 impl Point {
+    // 'Point' associated functions
+    // Associated function don't need to be called with an instance
     fn origin() -> Point {
         Point { x: 0.0, y: 0.0}
     }
 
+    // Associated function which have 2 parameters
     fn new(x: f64, y: f64) -> Point {
         Point {x: x, y: y}
     }
@@ -53,6 +56,8 @@ struct Rectangle {
 }
 
 impl Rectangle {
+    // Method
+    // `Self` = `Rectangle` ('Self' is the type of the caller object)
     // fn area(self: &Self) -> f65 // &self is sugar
     fn area(&self) -> f64 {
         let Point {x: x1, y: y1} = self.p1;
@@ -67,6 +72,7 @@ impl Rectangle {
         2.0 * ((x1 - x2).abs() + (y1 - y2).abs())
     }
 
+    // '&mut self' desugar to 'self: &mut Self'
     fn translate(&mut self, x: f64, y: f64) {
         self.p1.x += x;
         self.p2.x += x;
@@ -75,11 +81,13 @@ impl Rectangle {
     }    
 } 
 
+// 'Pair' owns resources: 2 heap allocated integers
 struct Pair(Box<i32>, Box<i32>);
 
 impl Pair {
     // self is sugar self:Self
     fn destroy(self) {
+        // Destructure 'self'
         let Pair(first, second) = self;
         println!("Destroying Pair({}, {})", first, second);
 
@@ -94,22 +102,32 @@ pub fn test_functions() {
     println!("test_functions_methods");
 
     let rectangle = Rectangle {
+        // Associated functions are called using '::'
         p1: Point::origin(),
         p2: Point::new(3.0, 4.0),
     };
 
+    // '&self' is implicitly passed
+    //println!("Rectangle perimeter: {}", rectangle.perimeter(&rectangle));
     println!("Rectangle perimeter: {}", rectangle.perimeter());
     println!("Rectangle area: {}", rectangle.area());
+
+    // error: cannot borrow `rectangle` as mutable, 
+    //        as it is not declared as mutable
+    //rectangle.translate(1.0, 1.0);
 
     let mut square = Rectangle {
         p1: Point::origin(),
         p2: Point::new(1.0, 1.0),
     };
 
+    // mutable object can call mutable method
     square.translate(1.0, 1.0);
 
     let pair = Pair(Box::new(1), Box::new(2));
     pair.destroy();
+    // Previous 'destroy' call 'consumed' 'pair'
+    //pair.destroy();
 
 }
 
