@@ -22,4 +22,4 @@ pub mod tryfrom_tryinto;
 pub mod to_from_string;
 pub mod expression;
 pub mod flow_ctrl;
-
+pub mod functions;

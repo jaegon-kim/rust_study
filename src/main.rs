@@ -25,5 +25,6 @@ fn main() {
     //test::tryfrom_tryinto::test_tryfrom_tryinto();
     //test::to_from_string::test_to_from_string();
     //test::expression::test_expression();
-    test::flow_ctrl::test_flow_ctrl();
+    //test::flow_ctrl::test_flow_ctrl();
+    test::functions::test_functions();
 }
