@@ -13,7 +13,7 @@ fn main() {
     //test::methods::test_methods();
     //test::constants::test_constants();
     //test::variable_bindings::test_variable_findings();
-    //est::mutability::test_mutability();
+    //test::mutability::test_mutability();
     //test::scope_shadowing::test_scope_shadowing();
     //test::declare_first::test_declare_first();
     //test::freezing::test_freezing();
@@ -26,5 +26,6 @@ fn main() {
     //test::to_from_string::test_to_from_string();
     //test::expression::test_expression();
     //test::flow_ctrl::test_flow_ctrl();
-    test::functions::test_functions();
+    //test::functions::test_functions();
+    test::closures::test_closures();
 }
