@@ -29,5 +29,6 @@ fn main() {
     //test::functions::test_functions();
     //test::closures::test_closures();
     //test::higher_order_functions::test_higher_order_functions();
-    test::diverging_functions::test_diverging_functions();
+    //test::diverging_functions::test_diverging_functions();
+    test::modules::test_modules();
 }
