@@ -132,8 +132,98 @@ fn test_struct_visibility() {
 
 }
 
+// Module - use declaration
+// https://doc.rust-lang.org/rust-by-example/mod/use.html
+
+/*
+use crate::deeply::nested:: {
+    my_first_function,
+    my_second_function,
+    AndAtraitType
+};
+
+fn test_use_declaration() {
+    my_first_function();
+}
+*/ 
+
+use crate::test::modules::deeply::nested::function2 as other_function;
+
+fn function2() {
+    println!("called `function2()`");
+}
+
+mod deeply {
+    pub mod nested {
+        pub fn function2() {
+            println!("called `deeply::nested::function2()`");
+        }
+    }
+}
+
+fn test_use_declaration2() {
+    other_function();
+    println!("Entering block");
+    {
+        use crate::test::modules::deeply::nested::function2;
+        function2();
+        println!("Leaving block");
+    }
+    function2();
+}
+
+// Super & Self
+// https://doc.rust-lang.org/rust-by-example/mod/super.html
+
+fn function3() {
+    println!("called `function3()`");
+}
+
+mod cool {
+    pub fn function3() {
+        println!("called `cool::function3()`");
+    }
+}
+
+mod my3 {
+    fn function3() {
+        println!("called `my3::function3()`");
+    }
+
+    mod cool {
+        pub fn function3() {
+            println!("called `my3::cool::function3()`");
+        }
+    }
+
+    pub fn indirect_call() {
+        print!("called `my3::indirect_call()`, that\n> ");
+        self::function3();
+        function3();
+        self::cool::function3();
+
+        // The `super` keyword refers to the parent scope 
+        // (outside the `my` module).
+        super::function3();
+
+        { 
+            cool::function3();
+
+            use crate::test::modules::cool::function3 as root_function;
+            root_function();
+        }
+
+    }
+}
+
+fn test_super() {
+    my3::indirect_call();
+}
 
 pub fn test_modules() {
     test_visibility();
     test_struct_visibility();
+    //test_use_declaration1();
+    test_use_declaration2();
+    test_super();
 }
