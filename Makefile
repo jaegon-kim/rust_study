@@ -44,6 +44,10 @@ local-run:
 
 .PHONY: docker-run
 docker-run:
+# execute like belows
+# make docker-run CMD="...."
+	@echo docker-run [command line: '$(CMD)']
+	@echo
 	@$(container_run) $(CMD) 
 
 .PHONY: clean
