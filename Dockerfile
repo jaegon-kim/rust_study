@@ -1,2 +1,2 @@
-FROM rust:1.49 AS build-env
+FROM rust:1.74 AS build-env
 

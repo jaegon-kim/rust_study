@@ -6,7 +6,7 @@ default: build
 
 src_dir := src
 output_dir := output
-project := hello
+project := rust_study
 
 build_env_image := cont-rust-build-env:$(version)
 
@@ -16,8 +16,8 @@ container_build = $(CONTAINER_RUNTIME) build \
 	.
 
 container_run = $(CONTAINER_RUNTIME) run \
-	--rm -t -h $(build_env_image) -e AT_CONTAINER=true \
-	--mount type=bind,source=$(CURDIR),target=/root/$(src_dir) -w /root/$(src_dir) \
+	--rm -t -h $(build_env_image) -e AT_CONTAINER=true -e CARGO_HOME=/root/$(project)/.cargo \
+	--mount type=bind,source=$(CURDIR),target=/root/$(project) -w /root/$(project) \
 	$(container_run_options) \
 	--pull never $(build_env_image)
 
@@ -32,21 +32,23 @@ build:
 
 .PHONY: run
 run:
-	@$(container_run) target/release/hello 
+	@$(container_run) target/release/hello --name Me --count 1
 
 .PHONY: local
 local:
-	cargo build --release 
+	cargo build --release
 
 .PHONY: local-run
 local-run:
-	target/release/hello 
+	target/release/hello
 
 .PHONY: docker-run
 docker-run:
 # execute like belows
 # make docker-run CMD="...."
+	@echo $(container_run)
 	@echo docker-run [command line: '$(CMD)']
+
 	@echo
 	@$(container_run) $(CMD) 
 

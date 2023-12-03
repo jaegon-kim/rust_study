@@ -1,6 +1,8 @@
 [package]
 name = "hello"
 version = "0.0.1"
-edition = "2018"
+edition = "2021"
 
 [dependencies]
+clap = { version = "4.4.10", features = ["derive"]} # from crates.io
+time = "0.1.12"
