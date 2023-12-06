@@ -27,4 +27,8 @@ pub mod closures;
 pub mod higher_order_functions;
 pub mod diverging_functions;
 pub mod modules;
+pub mod argument;
+pub mod random;
+pub mod attributes;
+pub mod generic;
 

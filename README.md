@@ -3,7 +3,8 @@
 ## Rust example for study 
 https://doc.rust-lang.org/rust-by-example/index.html
 
-Curr: https://doc.rust-lang.org/rust-by-example/fn.html
+Current:
+https://doc.rust-lang.org/rust-by-example/generics.html
 
 ## Run on Containerized Build Environment
 <pre>
