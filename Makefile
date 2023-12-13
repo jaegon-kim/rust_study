@@ -43,7 +43,7 @@ local:
 	cargo build --release
 
 .PHONY: run
-run:
+run: build
 	@$(container_run) target/release/hello $(test_arguments)
 
 .PHONY: local-run

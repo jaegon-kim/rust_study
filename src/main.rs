@@ -36,5 +36,7 @@ fn main() {
     //test::argument::test_argument();
     //test::random::test_rand();
     //test::attributes::test_attributes();
-    test::generic::test_generic();
+    //test::generic::test_generic();
+    test::scoping_rules::test_scoping_ruiles();
+ 
 }
