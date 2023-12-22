@@ -32,4 +32,6 @@ pub mod random;
 pub mod attributes;
 pub mod generic;
 pub mod scoping_rules;
+pub mod traits;
+pub mod macro_rules;
 

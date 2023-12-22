@@ -37,6 +37,8 @@ fn main() {
     //test::random::test_rand();
     //test::attributes::test_attributes();
     //test::generic::test_generic();
-    test::scoping_rules::test_scoping_ruiles();
+    //test::scoping_rules::test_scoping_ruiles();
+    //test::traits::test_traits();
+    test::macro_rules::test_macro_rules();
  
 }
