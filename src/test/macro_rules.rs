@@ -1,4 +1,4 @@
-
+#![allow(unused)]
 
 macro_rules! say_hello {
     // no argument

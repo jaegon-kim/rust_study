@@ -39,6 +39,7 @@ fn main() {
     //test::generic::test_generic();
     //test::scoping_rules::test_scoping_ruiles();
     //test::traits::test_traits();
-    test::macro_rules::test_macro_rules();
+    //test::macro_rules::test_macro_rules();
+    test::error_handle::test_error_handle();
  
 }
