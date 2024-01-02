@@ -35,3 +35,4 @@ pub mod scoping_rules;
 pub mod traits;
 pub mod macro_rules;
 pub mod error_handle;
+pub mod vectors;

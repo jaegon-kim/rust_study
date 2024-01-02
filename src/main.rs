@@ -11,7 +11,6 @@ fn main() {
     //test::structures::test_structures();
     //test::enums::test_enum();
     //test::list_functional::test_list_functional();
-    //test::box_heap::test_box();
     //test::methods::test_methods();
     //test::constants::test_constants();
     //test::variable_bindings::test_variable_findings();
@@ -40,6 +39,8 @@ fn main() {
     //test::scoping_rules::test_scoping_ruiles();
     //test::traits::test_traits();
     //test::macro_rules::test_macro_rules();
-    test::error_handle::test_error_handle();
+    //test::error_handle::test_error_handle();
+    //test::box_heap::test_box();
+    test::vectors::test_vectors();
  
 }

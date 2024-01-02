@@ -1,4 +1,4 @@
-
+#![allow(unused)]
 
 //#[cfg(panic = "abort")]
 fn drink(beverage: &str) {
