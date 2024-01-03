@@ -41,6 +41,7 @@ fn main() {
     //test::macro_rules::test_macro_rules();
     //test::error_handle::test_error_handle();
     //test::box_heap::test_box();
-    test::vectors::test_vectors();
+    //test::vectors::test_vectors();
+    test::strings::test_strings();
  
 }

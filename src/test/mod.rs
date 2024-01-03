@@ -36,3 +36,4 @@ pub mod traits;
 pub mod macro_rules;
 pub mod error_handle;
 pub mod vectors;
+pub mod strings;

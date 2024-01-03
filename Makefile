@@ -47,7 +47,7 @@ run: build
 	@$(container_run) target/release/hello $(test_arguments)
 
 .PHONY: local-run
-local-run:
+local-run: local
 	target/release/hello $(test_arguments)
 
 .PHONY: docker-run
