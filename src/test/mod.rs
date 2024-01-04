@@ -37,3 +37,4 @@ pub mod macro_rules;
 pub mod error_handle;
 pub mod vectors;
 pub mod strings;
+pub mod pointer;

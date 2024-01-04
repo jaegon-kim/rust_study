@@ -125,4 +125,19 @@ pub fn test_print() {
         //println!("{:#?}", color);
     }
 
+    let buf: [u8; 12]= [
+        0x96, 0x0C, 0x96, 0x0C, 0x00, 0x00, 0x00, 0x00,
+        0x00, 0x00, 0x00, 0x00, 
+    ];
+
+    // Hex printing format
+    print!("[len:{}]", buf.len());
+    for b in buf {
+        print!("{:02x} ", b); // 96 0c ..
+        //print!("{:02X} ", b); // 96 0C ..
+        //print!("{:#04x} ", b); // 0x96 0x0c .. ('4' include '0x')
+        //print!("{:#04X} ", b); // 0x96 0x0C ..
+    }
+    println!();
+
 }
