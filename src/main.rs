@@ -1,5 +1,6 @@
 
 mod test;
+mod apps;
 
 fn main() {
 
@@ -42,6 +43,9 @@ fn main() {
     //test::error_handle::test_error_handle();
     //test::box_heap::test_box();
     //test::vectors::test_vectors();
-    test::strings::test_strings();
- 
+    //test::strings::test_strings();
+    //test::pointer::test_pointer();
+
+    apps::sctp_decoder::test_decoding_sctp();
+
 }
