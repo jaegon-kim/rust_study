@@ -4,7 +4,7 @@
 https://doc.rust-lang.org/rust-by-example/index.html
 
 Current:
-https://doc.rust-lang.org/rust-by-example/std.html
+https://doc.rust-lang.org/rust-by-example/std/result.html
 
 ## Run on Containerized Build Environment
 <pre>

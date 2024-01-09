@@ -45,7 +45,8 @@ fn main() {
     //test::vectors::test_vectors();
     //test::strings::test_strings();
     //test::pointer::test_pointer();
+    test::option::test_option();
 
-    apps::sctp_decoder::test_decoding_sctp();
+    //apps::sctp_decoder::test_decoding_sctp();
 
 }
