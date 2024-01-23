@@ -58,6 +58,28 @@ struct Header {
     checksum: u32,
 }
 
+impl Header {
+    pub fn decode_src_port(&self) -> u16 {
+        u16::from_be(self.src_port)
+    }
+
+    pub fn set_src_port(&mut self, val: u16) {
+        self.src_port = u16::to_be(val);
+    }
+}
+
+fn dump_buf<T>(buf: & [T], print_element: fn(&T)) {
+    print!("[len:{}] ", buf.len());
+    for b in buf {
+        print_element(b);
+    }
+    println!();
+}
+
+fn cast_to_header(buf: & [u8]) -> &mut Header {
+    unsafe{std::mem::transmute(buf.as_ptr())}
+}
+
 fn test_casting_buf_to_struct() {
 
     let buf: [u8; 12]= [ 0x96, 0x0C, 0x96, 0x0C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, ];
@@ -102,16 +124,51 @@ fn test_casting_buf_to_struct() {
     unsafe {
         let ptr: *const u8 = ref_h_for_long_buf as *const _ as *const u8;
 
-        let ptr_src_port = ptr.offset(0) as *const _ as *const u16;
+        let ptr_src_port: *const u16 = ptr.offset(0) as *const _ as *const u16;
         println!("src_port: {:04x} (addr:{:?})", *ptr_src_port, std::ptr::addr_of!(*ptr_src_port));
         println!("Endian processing of src_port: {:04x}", u16::from_be(*ptr_src_port));
 
         let ptr_dst_port = ptr.offset(2) as *const _ as *const u16;
         println!("dst_port: {:04x} (addr:{:?})", *ptr_dst_port, std::ptr::addr_of!(*ptr_dst_port));
         println!("Endian processing of dst_port: {:04x}", u16::from_be(*ptr_dst_port));
-
     }
 
+    // Or 
+    let ptr: *const u8 = ref_h_for_long_buf as *const _ as *const u8;
+    let mut src_port = unsafe{std::slice::from_raw_parts(ptr.offset(0), 2)};
+    println!("src_port: {:#02x} {:#02x}, size: {}", src_port[0], src_port[1], src_port.len());
+
+    let mut dst_port = unsafe{std::slice::from_raw_parts(ptr.offset(2), 2)};
+    println!("dst_port: {:#02x} {:#02x}, size: {}", dst_port[0], dst_port[1], dst_port.len());
+
+    // For testing mutability
+    let mbuf: &mut [u8]= &mut [
+        0x96, 0x0C, 0x97, 0x0D, 0x00, 0x00, 0x00, 0x00,
+        0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x34,
+        0x29, 0xA4, 0xB8, 0x40, 0x00, 0x01, 0xA0, 0x00,
+        0x00, 0x02, 0x00, 0x02, 0xFC, 0xFD, 0xD3, 0x10,
+        0x00, 0x00, 0x2C, 0x00, 0x06, 0x00, 0x05, 0x00,
+        0x00, 0x80, 0x00, 0x00, 0x04, 0xC0, 0x00, 0x00,
+        0x04 // 49 bytes
+    ];
+
+    dump_buf::<u8>(mbuf, |b| print!("{:02x} ", b));
+
+    //let mut ref_h: &mut Header = unsafe{std::mem::transmute(mbuf.as_mut_ptr())};
+    let mut ref_h: &mut Header = cast_to_header(mbuf);
+
+    let ptr = ref_h as *mut Header as *mut u8;
+
+    let mut src_port = unsafe{std::slice::from_raw_parts_mut(ptr.offset(0), 2)};
+    println!("src_port: {:#02x} {:#02x}, size: {}", src_port[0], src_port[1], src_port.len());
+
+    // Mutable
+    src_port[0] = 0xff;
+    println!("src_port: {:#02x} {:#02x}, size: {}", src_port[0], src_port[1], src_port.len());
+
+    dump_buf::<u8>(mbuf, |b| print!("{:02x} ", b));
+
+    println!("src_port: {}", ref_h.decode_src_port());
 
 }
 

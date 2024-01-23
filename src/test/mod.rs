@@ -38,4 +38,5 @@ pub mod error_handle;
 pub mod vectors;
 pub mod strings;
 pub mod pointer;
-pub mod option;
+pub mod thread;
+pub mod c_efi;

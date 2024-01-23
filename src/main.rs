@@ -45,8 +45,10 @@ fn main() {
     //test::vectors::test_vectors();
     //test::strings::test_strings();
     //test::pointer::test_pointer();
-    test::option::test_option();
+    //test::thread::test_thread();
+    //test::c_efi::test_c_efi();
 
-    //apps::sctp_decoder::test_decoding_sctp();
-
+    //apps::hex_stream2array::test_hex_stream2array();
+    apps::sctp_decoder::test_decoding_sctp();
+ 
 }

@@ -109,9 +109,28 @@ fn test_bytestring() {
 
 }
 
+fn test_string_print() {
+
+    let buf_byte_raw = b"c3b6271000000000000000000100003429a4b8400001a00000020002\
+    dcfdd310000500080afb479200050008c0a83802000c00060005000080000004c0000004";
+
+    println!("buf_byte_raw: {} {}", buf_byte_raw[0], buf_byte_raw[0] as char );
+
+    let buf_str = "c3b6271000000000000000000100003429a4b8400001a00000020002\
+    dcfdd310000500080afb479200050008c0a83802000c00060005000080000004c0000004";
+
+    println!("buf_byte_raw: {} {}", buf_str.as_bytes()[0], buf_str.as_bytes()[0] as char);
+
+    for c in buf_byte_raw {
+        print!("{} ", *c as char);
+    } 
+    println!();
+}
+
 
 pub fn test_strings() {
     test_strings_basic();
     test_literals_escapes();
-    test_bytestring();  
+    test_bytestring();
+    test_string_print();
 }
