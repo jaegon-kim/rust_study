@@ -17,12 +17,19 @@ container_build = $(CONTAINER_RUNTIME) build \
 	$(container_build_options) \
 	.
 
-# Command for executing command in rust build environment (compilation, and executing)
-container_run = $(CONTAINER_RUNTIME) run \
-	--rm -t -h $(build_env_image) -e AT_CONTAINER=true -e CARGO_HOME=/root/$(project)/.cargo \
+# common container parameters
+container_run_parameters = --rm -t -h $(build_env_image) \
+	-e AT_CONTAINER=true -e CARGO_HOME=/root/$(project)/.cargo \
 	--mount type=bind,source=$(CURDIR),target=/root/$(project) -w /root/$(project) \
 	$(container_run_options) \
 	--pull never $(build_env_image)
+
+# Command for executing command in rust build environment (compilation, and executing)
+container_run = $(CONTAINER_RUNTIME) run $(container_run_parameters)
+
+# Command for running rust build environment as daemon
+container_daemon_run = $(CONTAINER_RUNTIME) run -d $(container_network) --name $(project) $(container_run_parameters)
+#container_network = --network macvlan_enp1s0f1 --ip=192.168.56.56
 
 # Test Parameter for testing command line argument
 test_arguments = --name Rust --age 10
@@ -36,7 +43,11 @@ build-env:
 
 .PHONY: build
 build:
+ifdef AT_CONTAINER
+	cargo build --release
+else
 	@$(container_run) cargo build --release 
+endif
 
 .PHONY: local
 local:
@@ -44,7 +55,11 @@ local:
 
 .PHONY: run
 run: build
+ifdef AT_CONTAINER
+	target/release/hello $(test_arguments)
+else
 	@$(container_run) target/release/hello $(test_arguments)
+endif
 
 .PHONY: local-run
 local-run: local
@@ -60,9 +75,23 @@ docker-run:
 	@echo
 	@$(container_run) $(CMD) 
 
+.PHONY: daemon-run
+daemon-run:
+	@echo $(container_daemon_run)
+	@$(container_daemon_run)
+
+.PHONY: daemon
+daemon:
+	@echo $(container_daemon_run)
+	$(CONTAINER_RUNTIME) exec -it $(project) /bin/bash
+
 .PHONY: clean
 clean:
+ifdef AT_CONTAINER
+	cargo clean 
+else
 	@$(container_run) cargo clean 
+endif
 
 .PHONY: local-clean
 local-clean:

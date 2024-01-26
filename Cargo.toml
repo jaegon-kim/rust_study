@@ -7,3 +7,4 @@ edition = "2021"
 clap = { version = "4.4.10", features = ["derive"]} # from crates.io
 rand = "0.8.4"
 libc = "0.2.0"
+nix = "0.27.1"

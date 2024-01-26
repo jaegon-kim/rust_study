@@ -4,7 +4,7 @@ mod apps;
 
 fn main() {
 
-    println!("Hello World");
+    println!("Rust: Hello World");
     //test::primitives::test_primitive();
     //test::print::test_print();
     //test::tuples::test_tuples();
@@ -49,6 +49,7 @@ fn main() {
     //test::c_efi::test_c_efi();
 
     //apps::hex_stream2array::test_hex_stream2array();
-    apps::sctp_decoder::test_decoding_sctp();
- 
+    //apps::sctp_decoder::test_decoding_sctp();
+    apps::raw_socket_c::test_raw_socket_c();
+    //apps::raw_socket_nix::test_raw_socket_nix();
 }

@@ -6,6 +6,9 @@ https://doc.rust-lang.org/rust-by-example/index.html
 Current:
 https://doc.rust-lang.org/rust-by-example/std/result.html
 
+## Rust-kr user group
+https://rust-kr.org/
+
 ## Run on Containerized Build Environment
 <pre>
 <code>

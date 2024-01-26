@@ -5,18 +5,19 @@ use crate::apps::sctp_header::SctpChunkHeader;
 use crate::apps::sctp_header::SctpChunkType;
 use crate::apps::sctp_header::SctpInitChunk;
 
-fn dump_buf<T>(buf: & [T], print_element: fn(&T)) {
-    print!("[len:{}] ", buf.len());
-    for b in buf {
-        print_element(b);
+fn dump_buf<T>(buf: & [T], len: usize, print_element: fn(&T)) {
+    let l: usize = if buf.len() > len { len } else { buf.len() };
+    print!("[len:{}] ", l);
+    for i in 0..l {
+        print_element(&buf[i])
     }
     println!();
 }
 
-pub fn decode_sctp(buf: &mut [u8]) {
+pub fn decode_sctp(buf: &mut [u8], len: usize) {
     println!("- decode_sctp");
     
-    dump_buf::<u8>(buf, |b| print!("{:02x} ", b));
+    dump_buf::<u8>(buf, len, |b| print!("{:02x} ", b));
 
     let opt_sctp_hdr:Option<&mut SctpHeader> = SctpHeader::new(buf);
     if opt_sctp_hdr.is_none() {
@@ -29,18 +30,18 @@ pub fn decode_sctp(buf: &mut [u8]) {
         sctp_hdr, std::mem::size_of_val(sctp_hdr),std::ptr::addr_of!(*sctp_hdr));
 
     // sctp_header is mutable
-    sctp_hdr.set_checksum(0xAABBCCDDu32);
-    dump_buf::<u8>(buf, |b| print!("{:02x} ", b));
-    println!("sctp header {}", sctp_hdr);
+    //sctp_hdr.set_checksum(0xAABBCCDDu32);
+    //dump_buf::<u8>(buf, len, |b| print!("{:02x} ", b));
+    //println!("sctp header {}", sctp_hdr);
 
     let sctp_chunk_hdr: &mut SctpChunkHeader = sctp_hdr.payload::<SctpChunkHeader>().unwrap();
     println!("sctp chunk header {}", sctp_chunk_hdr);
 
     // sctp_chunk_header is mutable
-    sctp_chunk_hdr.set_chunktype(SctpChunkType::Init);
-    sctp_chunk_hdr.set_flags(0x55);
-    dump_buf::<u8>(buf, |b| print!("{:02x} ", b));
-    println!("sctp chunk header {}", sctp_chunk_hdr);
+    //sctp_chunk_hdr.set_chunktype(SctpChunkType::Init);
+    //sctp_chunk_hdr.set_flags(0x55);
+    //dump_buf::<u8>(buf, len, |b| print!("{:02x} ", b));
+    //println!("sctp chunk header {}", sctp_chunk_hdr);
 
     match sctp_chunk_hdr.decode_chunktype() {
         SctpChunkType::Init => {
@@ -51,7 +52,7 @@ pub fn decode_sctp(buf: &mut [u8]) {
             println!("Else")
         },
     }
-    dump_buf::<u8>(buf, |b| print!("{:02x} ", b));
+    dump_buf::<u8>(buf, len, |b| print!("{:02x} ", b));
 }
 
 fn decoding_sctp_init(sctp_init: &mut SctpInitChunk) {
@@ -77,10 +78,10 @@ fn decoding_sctp_init(sctp_init: &mut SctpInitChunk) {
 
 pub fn test_decoding_sctp() {
     println!("* test_decoding_sctp");
-
-    decode_sctp(&mut [
+    let buf: &mut [u8] = &mut [
         0x96, 0x0c, 0x96, 0x0c, 0x00, 0x00, 0x00, 0x00, 
-    ]);
+    ];
+    decode_sctp(buf, buf.len());
 
     let buf: &mut [u8] = &mut [
         0x96, 0x0c, 0x96, 0x0c, 0x00, 0x00, 0x00, 0x00, 
@@ -92,6 +93,6 @@ pub fn test_decoding_sctp() {
         0x00, 0x0c, 0x00, 0x06, 0x00, 0x05, 0x00, 0x00, 
         0x80, 0x00, 0x00, 0x04, 0xc0, 0x00, 0x00, 0x04, 
     ];
-    decode_sctp(buf);
+    decode_sctp(buf, buf.len());
 
 }
