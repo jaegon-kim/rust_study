@@ -37,7 +37,7 @@ fn main() {
     //test::random::test_rand();
     //test::attributes::test_attributes();
     //test::generic::test_generic();
-    //test::scoping_rules::test_scoping_ruiles();
+    test::scoping_rules::test_scoping_ruiles();
     //test::traits::test_traits();
     //test::macro_rules::test_macro_rules();
     //test::error_handle::test_error_handle();
@@ -50,6 +50,6 @@ fn main() {
 
     //apps::hex_stream2array::test_hex_stream2array();
     //apps::sctp_decoder::test_decoding_sctp();
-    apps::raw_socket_c::test_raw_socket_c();
+    //apps::raw_socket_c::test_raw_socket_c();
     //apps::raw_socket_nix::test_raw_socket_nix();
 }

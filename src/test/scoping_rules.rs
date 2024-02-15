@@ -32,8 +32,11 @@ fn test_ownership_and_move() {
     let x = 5u32; // _Stack_ allocated integer
     let y = x; // No resource move
 
+    // stack에 잡히는 Primitive Type은 ownership이 이전되지 않는다.
+    // x가 y로 복사되어 copy가 된다.
     println!("x is {}, and y is {}", x, y);
 
+    // 그러나 heap에 잡히는 메모리는 ownership이 이전된다.
     let a = Box::new(5i32); // 'a' is a pointer to a _heap_ 
     println!(" a contains: {}", a); 
 
@@ -41,6 +44,7 @@ fn test_ownership_and_move() {
                          // to the same _heap_, but b owns it
     // error !
     // value borrowed here after move
+    // a의 ownership이 이전되었기 때문에, a를 접근하면 컴파일 타임에 에러가 발생한다.
     //println!(" a contains: {}", a); 
 
     println!(" a was moved to b, b contains: {}", b);  // b has the _heap_
@@ -49,6 +53,16 @@ fn test_ownership_and_move() {
  
     // b lost ownership for _heap_
     //println!(" b contains: {}", b); 
+
+    // String은 Heap에 잡힌다.
+    let str_1 = String::from("Hello");
+    println!("str_1:{}", str_1);
+
+    let str_2 = str_1;
+    // str_1의 ownership이 str_2로 이전 되었으므로, 컴파일 타임에 에러가 발생한다.
+    //println!("str_1:{}", str_1);
+
+    println!("str_2:{}", str_2);
 }
 
 // Mutability of data can be changed when ownership is transfered
@@ -532,19 +546,19 @@ fn test_lifetimes_elision() {
 
 pub fn test_scoping_ruiles() {
     println!("test_scoping_ruiles");
-    test_raii();
-    test_ownership_and_move();
-    test_mutability();
-    test_partial_moves();
-    test_borrowing();
-    test_borrowing_mutability();
-    test_borrowing_aliasing();
-    test_ref_pattern();
-    test_lifetimes();
-    test_explicit_lifetime_annotation();
-    test_lifetimes_functions();
-    test_lifetimes_methods();
-    test_lifetimes_struct();
-    test_lifetimes_bound();
-    test_lifetimes_corecion();
+    // test_raii();
+     test_ownership_and_move();
+    // test_mutability();
+    // test_partial_moves();
+    // test_borrowing();
+    // test_borrowing_mutability();
+    // test_borrowing_aliasing();
+    // test_ref_pattern();
+    // test_lifetimes();
+    // test_explicit_lifetime_annotation();
+    // test_lifetimes_functions();
+    // test_lifetimes_methods();
+    // test_lifetimes_struct();
+    // test_lifetimes_bound();
+    // test_lifetimes_corecion();
 }

@@ -1,3 +1,5 @@
+#![allow(unused)]
+
 use std::os::raw::c_int;
 use std::ptr;
 use std::ffi::CString;
@@ -78,7 +80,7 @@ pub fn test_raw_socket_c() {
         let opt_sctp = ip.payload::<SctpHeader>();
         println!("{:?}", opt_sctp);
         
-        //decode_sctp(&mut buf[20..], (r - 20) as usize);
+        decode_sctp(&mut buf[20..], (r - 20) as usize);
     }
 
 }

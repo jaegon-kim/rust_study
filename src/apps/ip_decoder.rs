@@ -1,3 +1,4 @@
+#![allow(unused)]
 
 use crate::apps::ip_header::Ipv4Header;
 
