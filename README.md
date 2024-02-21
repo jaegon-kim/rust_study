@@ -29,4 +29,7 @@ make local
 make local-run
 </code>
 </pre>
-  
+
+## References
+### Orphan rule
+https://rinthel.github.io/rust-lang-book-ko/ch10-02-traits.html
